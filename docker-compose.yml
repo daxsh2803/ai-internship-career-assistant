@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # ===========================================================================
+  # 1. PostgreSQL 16 with pgvector extension (Unified Relational & Vector Store)
+  # ===========================================================================
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: internship_postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-internship_platform}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-internship_platform}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - platform_network
+
+  # ===========================================================================
+  # 2. Ollama Local LLM Daemon (Zero-Cost Local Inference)
+  # ===========================================================================
+  ollama:
+    image: ollama/ollama:latest
+    container_name: internship_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - platform_network
+
+  # ===========================================================================
+  # 3. FastAPI Production Backend Service Layer
+  # ===========================================================================
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: internship_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-internship_platform}
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=llama3.2
+      - ENVIRONMENT=development
+      - DEBUG=True
+    volumes:
+      - ./backend:/app/backend
+      - ./data/uploads:/app/data/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - platform_network
+
+volumes:
+  postgres_data:
+    driver: local
+  ollama_data:
+    driver: local
+
+networks:
+  platform_network:
+    driver: bridge
