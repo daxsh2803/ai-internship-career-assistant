@@ -300,21 +300,30 @@ export default function Milestone1Page() {
           },
           projects: [
             {
-              title: "AI Lawyer Chatbot",
-              technologies: ["Groq", "LangChain", "Streamlit", "DeepSeek-R1", "Ollama"],
+              title: "Distributed Search Engine",
+              technologies: ["C++20", "CMake", "Docker", "Apache Kafka"],
               highlights: [
-                "Engineered conversational legal consultation chatbot using DeepSeek-R1 and Ollama.",
-                "Implemented low-latency LLM inference pipelines using Groq and LangChain retrieval workflows.",
-                "Built intuitive, interactive web client interface using Streamlit.",
+                "Architected a distributed search engine capable of indexing millions of web pages.",
+                "Implemented fault-tolerant consensus and replicated write pipelines across multiple nodes with low latency.",
+                "Containerized nodes with Docker and managed build configurations via CMake.",
               ],
             },
             {
-              title: "UIDAI Data Hackathon-2026",
-              technologies: ["Python", "Pandas", "NumPy", "Matplotlib"],
+              title: "Interview Sandbox",
+              technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Socket.io", "Yjs"],
               highlights: [
-                "Conducted high-depth data cleaning and exploratory data analysis (EDA) across massive datasets.",
-                "Computed statistical aggregations and matrix computations using NumPy and Pandas.",
-                "Constructed comprehensive distribution visualizations and anomaly dashboards via Matplotlib.",
+                "Built a real-time collaborative coding sandbox with operational transformation using Yjs.",
+                "Implemented low-latency bidirectional signaling using Socket.io and session synchronization with Redis.",
+                "Designed secure multi-tenant execution sandboxes with resource quotas.",
+              ],
+            },
+            {
+              title: "AI Lawyer Chatbot",
+              technologies: ["Python", "LangChain", "Groq", "Streamlit"],
+              highlights: [
+                "Engineered a legal reasoning assistant utilizing LangChain and Groq API for rapid inference.",
+                "Implemented retrieval-augmented generation across statutory penal codes and case laws.",
+                "Developed an interactive conversational UI using Streamlit.",
               ],
             },
           ],

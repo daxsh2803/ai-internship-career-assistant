@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 from typing import Dict, List, Optional
 import pymupdf as fitz
 
@@ -118,9 +119,10 @@ class PDFExtractionService:
             clean_line = trimmed.strip("#*-_: ")
             upper = clean_line.upper()
 
-            if len(clean_line.split()) <= 5:
+            if len(clean_line.split()) <= 4 and not any(ch in clean_line for ch in ["|", ",", "(", ")", "/", "\\"]) and not any(w in clean_line.lower().split() for w in ["with", "in", "and", "for", "at", "by", "on", "using", "to", "over", "across", "under"]):
+                cleaned_upper = re.sub(r"[:\-—]+$", "", upper).strip()
                 for stype, keywords in section_headers.items():
-                    if any(upper == kw or upper.startswith(kw + " ") or upper.endswith(" " + kw) for kw in keywords):
+                    if any(cleaned_upper == kw for kw in keywords):
                         matched_type = stype
                         break
 

@@ -11,6 +11,7 @@ from app.services.pdf_service import PDFExtractionService
 router = APIRouter(prefix="/resume", tags=["Resume Analysis"])
 
 @router.post("/analyze", response_model=ResumeAnalysisResponse)
+@router.post("/parse", response_model=ResumeAnalysisResponse)
 async def analyze_resume(
     file: UploadFile = File(..., description="PDF Resume file"),
 ):
@@ -68,8 +69,8 @@ async def analyze_resume(
             "projects": [
                 {
                     "title": p.title,
-                    "technologies": p.technologies_used,
-                    "highlights": p.bullets,
+                    "technologies": p.technologies if p.technologies else p.technologies_used,
+                    "highlights": p.highlights if p.highlights else p.bullets,
                 }
                 for p in parsed.projects
             ],
