@@ -20,3 +20,9 @@ ENV/
 .env.local
 .DS_Store
 Thumbs.db
+
+__pycache__/
+*.pyc
+venv/
+**/venv/
+~$*.xls*

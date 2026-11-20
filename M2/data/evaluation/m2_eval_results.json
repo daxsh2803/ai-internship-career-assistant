@@ -1,0 +1,405 @@
+{
+  "timestamp": "2026-11-20T12:12:53.436566",
+  "total_profiles_evaluated": 5,
+  "mean_rag_precision_at_5": 1.0,
+  "mean_match_precision_at_5": 0.92,
+  "ranking_descending_pass_rate_pct": 100.0,
+  "determinism_consistency_rate_pct": 100.0,
+  "skill_match_accuracy_pct": 100.0,
+  "grounded_reasoning_compliance_pct": 100.0,
+  "profiles": [
+    {
+      "profile_id": "STUDENT-01-AI-RAG",
+      "candidate_name": "Aarav Sharma",
+      "degree_major": "B.Tech in Artificial Intelligence & Data Science",
+      "target_domains": [
+        "AI / Machine Learning & GenAI"
+      ],
+      "rag_precision_at_5": 1.0,
+      "match_precision_at_5": 0.6,
+      "is_strictly_descending": true,
+      "is_deterministic": true,
+      "zero_skill_hallucination": true,
+      "reasoning_grounded": true,
+      "expected_top_roles": [
+        "Generative AI & LLM Engineering Intern",
+        "Agentic AI & Autonomous Systems Intern",
+        "Machine Learning Systems Intern"
+      ],
+      "actual_top_3": [
+        {
+          "rank": 1,
+          "title": "Agentic AI & Autonomous Systems Intern",
+          "company": "OpenAI",
+          "domain": "AI / Machine Learning & GenAI",
+          "score": 70.98,
+          "tier": "Good Match",
+          "matched_skills": [
+            "Python",
+            "LangChain",
+            "FastAPI",
+            "Docker",
+            "PostgreSQL",
+            "Linux"
+          ],
+          "missing_required": [
+            "LLMs"
+          ],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, LangChain, FastAPI. Practical project evidence demonstrated in ..."
+        },
+        {
+          "rank": 2,
+          "title": "Agentic AI & Autonomous Systems Intern",
+          "company": "GitHub",
+          "domain": "AI / Machine Learning & GenAI",
+          "score": 70.36,
+          "tier": "Good Match",
+          "matched_skills": [
+            "Python",
+            "LangChain",
+            "FastAPI",
+            "Docker",
+            "PostgreSQL",
+            "Linux"
+          ],
+          "missing_required": [
+            "LLMs"
+          ],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, LangChain, FastAPI. Practical project evidence demonstrated in ..."
+        },
+        {
+          "rank": 3,
+          "title": "Agentic AI & Autonomous Systems Intern",
+          "company": "Uber",
+          "domain": "AI / Machine Learning & GenAI",
+          "score": 67.8,
+          "tier": "Good Match",
+          "matched_skills": [
+            "Python",
+            "LangChain",
+            "FastAPI",
+            "Docker",
+            "PostgreSQL",
+            "Linux"
+          ],
+          "missing_required": [
+            "LLMs"
+          ],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, LangChain, FastAPI. Practical project evidence demonstrated in ..."
+        }
+      ]
+    },
+    {
+      "profile_id": "STUDENT-02-SYS-BACKEND",
+      "candidate_name": "Priya Patel",
+      "degree_major": "B.Tech in Computer Science and Engineering",
+      "target_domains": [
+        "Backend & Distributed Systems"
+      ],
+      "rag_precision_at_5": 1.0,
+      "match_precision_at_5": 1.0,
+      "is_strictly_descending": true,
+      "is_deterministic": true,
+      "zero_skill_hallucination": true,
+      "reasoning_grounded": true,
+      "expected_top_roles": [
+        "Network & IPC Systems Intern",
+        "Event-Driven Architecture & Messaging Intern",
+        "Distributed Storage Engine Intern"
+      ],
+      "actual_top_3": [
+        {
+          "rank": 1,
+          "title": "Distributed Systems Engineering Intern",
+          "company": "MongoDB",
+          "domain": "Backend & Distributed Systems",
+          "score": 72.27,
+          "tier": "Good Match",
+          "matched_skills": [
+            "C++",
+            "Linux",
+            "Docker",
+            "Git",
+            "Apache Kafka",
+            "CMake"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: C++, Linux, Docker, Git. Practical project evidence demonstrated in 'Di..."
+        },
+        {
+          "rank": 2,
+          "title": "Distributed Systems Engineering Intern",
+          "company": "Atlassian",
+          "domain": "Backend & Distributed Systems",
+          "score": 72.12,
+          "tier": "Good Match",
+          "matched_skills": [
+            "C++",
+            "Linux",
+            "Docker",
+            "Git",
+            "Apache Kafka",
+            "CMake"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: C++, Linux, Docker, Git. Practical project evidence demonstrated in 'Di..."
+        },
+        {
+          "rank": 3,
+          "title": "Distributed Systems Engineering Intern",
+          "company": "Palantir Technologies",
+          "domain": "Backend & Distributed Systems",
+          "score": 71.89,
+          "tier": "Good Match",
+          "matched_skills": [
+            "C++",
+            "Linux",
+            "Docker",
+            "Git",
+            "Apache Kafka",
+            "CMake"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: C++, Linux, Docker, Git. Practical project evidence demonstrated in 'Di..."
+        }
+      ]
+    },
+    {
+      "profile_id": "STUDENT-03-FULLSTACK-WEB",
+      "candidate_name": "Rohan Verma",
+      "degree_major": "B.E. in Information Technology",
+      "target_domains": [
+        "Full-Stack Web & Applications"
+      ],
+      "rag_precision_at_5": 1.0,
+      "match_precision_at_5": 1.0,
+      "is_strictly_descending": true,
+      "is_deterministic": true,
+      "zero_skill_hallucination": true,
+      "reasoning_grounded": true,
+      "expected_top_roles": [
+        "Modern Web Applications Intern (Next.js 15)",
+        "Full-Stack Software Engineering Intern (React/Node)",
+        "Full-Stack AI Product Intern (Next.js/FastAPI)"
+      ],
+      "actual_top_3": [
+        {
+          "rank": 1,
+          "title": "Modern Web Applications Intern (Next.js 15)",
+          "company": "Infosys",
+          "domain": "Full-Stack Web & Applications",
+          "score": 85.44,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "PostgreSQL",
+            "Docker",
+            "Node.js",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Next.js, React, TypeScript, TailwindCSS. Practical project evidence dem..."
+        },
+        {
+          "rank": 2,
+          "title": "Modern Web Applications Intern (Next.js 15)",
+          "company": "Hugging Face",
+          "domain": "Full-Stack Web & Applications",
+          "score": 82.55,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "PostgreSQL",
+            "Docker",
+            "Node.js",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Next.js, React, TypeScript, TailwindCSS. Practical project evidence dem..."
+        },
+        {
+          "rank": 3,
+          "title": "Modern Web Applications Intern (Next.js 15)",
+          "company": "Zerodha",
+          "domain": "Full-Stack Web & Applications",
+          "score": 82.14,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "PostgreSQL",
+            "Docker",
+            "Node.js",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Next.js, React, TypeScript, TailwindCSS. Practical project evidence dem..."
+        }
+      ]
+    },
+    {
+      "profile_id": "STUDENT-04-DEVOPS-CLOUD",
+      "candidate_name": "Ananya Iyer",
+      "degree_major": "B.Tech in Computer Engineering",
+      "target_domains": [
+        "Cloud, DevOps, Platform & SRE"
+      ],
+      "rag_precision_at_5": 1.0,
+      "match_precision_at_5": 1.0,
+      "is_strictly_descending": true,
+      "is_deterministic": true,
+      "zero_skill_hallucination": true,
+      "reasoning_grounded": true,
+      "expected_top_roles": [
+        "Cloud Infrastructure & DevOps Intern",
+        "Kubernetes & Container Platform Intern",
+        "Site Reliability Engineering (SRE) Intern"
+      ],
+      "actual_top_3": [
+        {
+          "rank": 1,
+          "title": "Kubernetes & Container Platform Intern",
+          "company": "IBM",
+          "domain": "Cloud, DevOps, Platform & SRE",
+          "score": 87.91,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Docker",
+            "Kubernetes",
+            "Linux",
+            "Git",
+            "AWS",
+            "CI/CD",
+            "Bash"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Docker, Kubernetes, Linux, Git. Practical project evidence demonstrated..."
+        },
+        {
+          "rank": 2,
+          "title": "Kubernetes & Container Platform Intern",
+          "company": "AMD",
+          "domain": "Cloud, DevOps, Platform & SRE",
+          "score": 87.33,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Docker",
+            "Kubernetes",
+            "Linux",
+            "Git",
+            "AWS",
+            "CI/CD",
+            "Bash"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Docker, Kubernetes, Linux, Git. Practical project evidence demonstrated..."
+        },
+        {
+          "rank": 3,
+          "title": "Cloud Infrastructure & DevOps Intern",
+          "company": "Intel",
+          "domain": "Cloud, DevOps, Platform & SRE",
+          "score": 85.88,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Docker",
+            "Linux",
+            "AWS",
+            "Git",
+            "Kubernetes",
+            "CI/CD",
+            "Python"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Docker, Linux, AWS, Git. Practical project evidence demonstrated in 'Mu..."
+        }
+      ]
+    },
+    {
+      "profile_id": "STUDENT-05-DATA-ENG",
+      "candidate_name": "Vikramaditya Nair",
+      "degree_major": "B.Tech in Data Science and Engineering",
+      "target_domains": [
+        "Data Engineering & Analytics"
+      ],
+      "rag_precision_at_5": 1.0,
+      "match_precision_at_5": 1.0,
+      "is_strictly_descending": true,
+      "is_deterministic": true,
+      "zero_skill_hallucination": true,
+      "reasoning_grounded": true,
+      "expected_top_roles": [
+        "Data Engineering & ETL Pipelines Intern",
+        "Analytics Engineering Intern",
+        "Data Warehouse & Lakehouse Intern"
+      ],
+      "actual_top_3": [
+        {
+          "rank": 1,
+          "title": "Data Engineering & ETL Pipelines Intern",
+          "company": "Intel",
+          "domain": "Data Engineering & Analytics",
+          "score": 95.51,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Python",
+            "SQL",
+            "PostgreSQL",
+            "Docker",
+            "Linux",
+            "Pandas",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, SQL, PostgreSQL, Docker. Practical project evidence demonstrate..."
+        },
+        {
+          "rank": 2,
+          "title": "Data Engineering & ETL Pipelines Intern",
+          "company": "Wipro",
+          "domain": "Data Engineering & Analytics",
+          "score": 95.13,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Python",
+            "SQL",
+            "PostgreSQL",
+            "Docker",
+            "Linux",
+            "Pandas",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, SQL, PostgreSQL, Docker. Practical project evidence demonstrate..."
+        },
+        {
+          "rank": 3,
+          "title": "Data Engineering & ETL Pipelines Intern",
+          "company": "Zomato",
+          "domain": "Data Engineering & Analytics",
+          "score": 95.04,
+          "tier": "Strong Match",
+          "matched_skills": [
+            "Python",
+            "SQL",
+            "PostgreSQL",
+            "Docker",
+            "Linux",
+            "Pandas",
+            "Git"
+          ],
+          "missing_required": [],
+          "reasoning_snippet": "Candidate satisfies core technical requirements: Python, SQL, PostgreSQL, Docker. Practical project evidence demonstrate..."
+        }
+      ]
+    }
+  ]
+}

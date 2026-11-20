@@ -45,6 +45,10 @@ class LazyEngineProxy:
             )
         return self._engine
 
+    async def dispose(self):
+        if self._engine is not None:
+            await self._engine.dispose()
+
     def __getattr__(self, name: str) -> Any:
         return getattr(self.get_engine(), name)
 

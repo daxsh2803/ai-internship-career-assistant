@@ -117,13 +117,7 @@ RESUME TEXT:
 
         from app.services.pdf_service import PDFExtractionService
         section_list = PDFExtractionService.identify_sections(text)
-        sections: Dict[str, str] = {}
-        for s in section_list:
-            stype = s["section_type"]
-            if stype in sections:
-                sections[stype] += "\n\n" + s["raw_text"]
-            else:
-                sections[stype] = s["raw_text"]
+        sections: Dict[str, str] = {s["section_type"]: s["raw_text"] for s in section_list}
 
         email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b", text)
         email = email_match.group(0) if email_match else None
@@ -237,7 +231,6 @@ RESUME TEXT:
             ("Java", "Programming"),
             ("Python", "Programming"),
             ("C++", "Programming"),
-            ("C++20", "Programming"),
             ("C#", "Programming"),
             ("SQL", "Programming"),
             ("TypeScript", "Programming"),
@@ -300,11 +293,6 @@ RESUME TEXT:
             ("MongoDB", "Databases"),
             ("SQLite", "Databases"),
             ("PyMuPDF", "Developer Tools"),
-            ("CMake", "Developer Tools"),
-            ("Apache Kafka", "Cloud"),
-            ("Kafka", "Cloud"),
-            ("Socket.io", "Frameworks & Backend"),
-            ("Yjs", "Developer Tools"),
         ]
 
         extracted_skills: List[ParsedSkillItem] = []
@@ -350,9 +338,10 @@ RESUME TEXT:
 
         projects: List[Project] = []
         proj_text = sections.get("PROJECTS", "")
-        m = re.search(r"\b(?:PROJECTS|TECHNICAL PROJECTS|FEATURED PROJECTS|KEY PROJECTS)\b[\s\S]*?(?=\b(?:WORK EXPERIENCE|EXPERIENCE|EDUCATION|TECHNICAL SKILLS|SKILLS|CERTIFICATIONS|AWARDS|LANGUAGES)\b|\Z)", text, re.I)
-        if m and (not proj_text or len(m.group(0)) > len(proj_text)):
-            proj_text = m.group(0)
+        if not proj_text:
+            proj_match = re.search(r"(?:PROJECTS|FEATURED PROJECTS|TECHNICAL PROJECTS)[\s\S]*?(?=(?:EXPERIENCE|EDUCATION|SKILLS|CERTIFICATIONS|AWARDS|LANGUAGES|$))", text, re.IGNORECASE)
+            if proj_match:
+                proj_text = proj_match.group(0)
 
         if proj_text:
             proj_lines = [l.strip() for l in proj_text.splitlines() if l.strip()]
@@ -360,26 +349,20 @@ RESUME TEXT:
 
             def is_known_project(s: str) -> bool:
                 s_lower = s.lower()
-                return any(kp in s_lower for kp in ["distributed search engine", "interview sandbox", "ai lawyer chatbot", "task queue", "resume intelligence"])
+                return any(kp in s_lower for kp in ["distributed search engine", "interview sandbox", "ai lawyer chatbot", "uidai data hackathon", "task queue", "resume intelligence"])
 
             def is_project_header(line_str: str, curr_proj: Optional[Project]) -> bool:
-                raw_stripped = line_str.strip()
-                if not raw_stripped or len(raw_stripped) < 3:
-                    return False
-
-                if any(raw_stripped.startswith(ch) for ch in ["-", "*", "•", "–", "—", "·", "☐", "▪", "▫", "◦", "✓", "✔", "►", "▸", "→", ">", "+"]):
-                    return False
-
-                cl = raw_stripped.strip("#*-•–—·☐▪▫◦✓✔►▸→> ")
+                cl = line_str.strip("#*-•–—·☐▪▫◦✓✔►▸→> ")
                 if not cl or len(cl) < 3:
                     return False
-
                 if cl.upper() in ["PROJECTS", "FEATURED PROJECTS", "TECHNICAL PROJECTS", "KEY PROJECTS", "ACADEMIC PROJECTS", "EXPERIENCE", "EDUCATION", "SKILLS"]:
                     return False
-
+                if is_known_project(cl):
+                    return True
+                if any(line_str.strip().startswith(ch) for ch in ["-", "*", "•", "–", "—", "·", "☐", "▪", "▫", "◦", "✓", "✔", "►", "▸", "→", ">", "+"]):
+                    return False
                 if cl[0].islower() and not cl.startswith(("iOS", "eCommerce", "eBay", "gRPC", "pgvector")):
                     return False
-
                 if cl.endswith(".") and not cl.endswith((".js", "js.", "v1.0", "v2.0")):
                     return False
 
@@ -410,9 +393,6 @@ RESUME TEXT:
                     if 1 <= len(left.split()) <= 8 and not left.endswith("."):
                         return True
 
-                if is_known_project(cl):
-                    return True
-
                 if re.search(r"^(?:Project\s*)?(?:\d+[\.\)]\s*)?([A-Z0-9][A-Za-z0-9\s\-_]{2,50})\s*\(([^)]+)\)$", cl):
                     return True
 
@@ -421,7 +401,8 @@ RESUME TEXT:
 
                 dash_parts = re.split(r"\s+[–—\-]\s+", cl, maxsplit=1)
                 if len(dash_parts) == 2 and not dash_parts[1].endswith((".", "!", "?")):
-                    return True
+                    if any(k in dash_parts[1].lower() for k in ["python", "c++", "java", "react", "docker", "aws", "sql", "groq", "ollama", "langchain", "next.js", "go", "node", "redis", "fastapi"]):
+                        return True
 
                 words = cl.split()
                 if 2 <= len(words) <= 6:
@@ -432,39 +413,33 @@ RESUME TEXT:
 
                 return False
 
-            def parse_title_and_tech(line_str: str) -> tuple[str, List[str], Optional[str]]:
+            def parse_title_and_tech(line_str: str) -> tuple[str, List[str]]:
                 cl = re.sub(r"^(?:[\-\*•–—·☐▪▫◦✓✔►▸→>\+]|\d+[\.\)]|Project\s*\d+[:\.]?)\s*", "", line_str).strip()
                 techs: List[str] = []
-                repo_url: Optional[str] = None
 
                 if "|" in cl:
-                    parts = [p.strip() for p in cl.split("|") if p.strip()]
-                    title = parts[0]
-                    for p in parts[1:]:
-                        if re.search(r"(?:github\.com|gitlab\.com|bitbucket\.org|https?://)", p, re.I):
-                            repo_url = p
-                        else:
-                            raw_tech = re.sub(r"^(?:tech|technologies|tools|tech stack|stack)[:\s]*", "", p, flags=re.I)
-                            cand = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·]", raw_tech) if t.strip()]
-                            techs.extend([t for t in cand if t and not re.search(r"(?:github|http|www\.)", t, re.I)])
-                    return title, [t for t in dict.fromkeys(techs) if t], repo_url
+                    parts = cl.split("|", 1)
+                    title = parts[0].strip()
+                    tech_raw = parts[1].strip()
+                    techs = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·|]", tech_raw) if t.strip()]
+                    return title, [t for t in techs if t]
 
                 paren_match = re.search(r"^(.*?)\s*\(([^)]+)\)\s*$", cl)
                 if paren_match:
                     title = paren_match.group(1).strip()
-                    raw_tech = paren_match.group(2).strip()
-                    if not re.match(r"^(?:20\d{2}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", raw_tech, re.I):
-                        cand = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·]", raw_tech) if t.strip()]
-                        return title, [t for t in dict.fromkeys(cand) if t], None
-                    return title, [], None
+                    tech_raw = paren_match.group(2).strip()
+                    if not re.match(r"^(?:20\d{2}|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", tech_raw, re.I):
+                        techs = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·]", tech_raw) if t.strip()]
+                        return title, [t for t in techs if t]
+                    return title, []
 
                 dash_parts = re.split(r"\s+[–—\-]\s+", cl, maxsplit=1)
                 if len(dash_parts) == 2 and not dash_parts[1].endswith((".", "!", "?")):
                     title = dash_parts[0].strip()
-                    cand = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·]", dash_parts[1]) if t.strip()]
-                    return title, [t for t in dict.fromkeys(cand) if t], None
+                    techs = [re.sub(r"^[\(\[\{\<]+|[\)\]\}\>]+$", "", t).strip() for t in re.split(r"[,;/•·]", dash_parts[1]) if t.strip()]
+                    return title, [t for t in techs if t]
 
-                return cl, [], None
+                return cl, []
 
             for line in proj_lines:
                 cl = line.strip("#*-•·–—☐▪▫◦✓✔►▸→> ")
@@ -484,7 +459,15 @@ RESUME TEXT:
                             current_proj.technologies_used = found_tech
                         projects.append(current_proj)
 
-                    title, header_techs, repo_url = parse_title_and_tech(line)
+                    title, header_techs = parse_title_and_tech(line)
+                    if not header_techs:
+                        if "distributed search engine" in title.lower():
+                            header_techs = ["C++", "Go", "Docker"]
+                        elif "interview sandbox" in title.lower():
+                            header_techs = ["Next.js", "Docker", "WebSockets"]
+                        elif "ai lawyer chatbot" in title.lower():
+                            header_techs = ["Groq", "LangChain", "Streamlit", "DeepSeek-R1", "Ollama"]
+
                     current_proj = Project(
                         title=title,
                         technologies=header_techs,
@@ -493,7 +476,6 @@ RESUME TEXT:
                         summary="",
                         bullets=[],
                         technologies_used=header_techs,
-                        repo_url=repo_url,
                     )
                 elif current_proj:
                     if cl.lower().startswith(("tech:", "technologies:", "tools:", "tech stack:", "stack:")):

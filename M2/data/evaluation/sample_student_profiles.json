@@ -1,0 +1,298 @@
+[
+  {
+    "profile_id": "STUDENT-01-AI-RAG",
+    "candidate_name": "Aarav Sharma",
+    "email": "aarav.sharma@example.com",
+    "phone": "+91-9876501234",
+    "university_name": "Indian Institute of Technology Hyderabad",
+    "degree_major": "B.Tech in Artificial Intelligence & Data Science",
+    "gpa": 3.92,
+    "graduation_year": 2026,
+    "batch": "2022-2026",
+    "skills": [
+      "Python",
+      "LangChain",
+      "FastAPI",
+      "PyTorch",
+      "Docker",
+      "Hugging Face",
+      "Transformers",
+      "Vector Databases",
+      "PostgreSQL",
+      "Git",
+      "Linux"
+    ],
+    "educations": [
+      {
+        "institution_name": "IIT Hyderabad",
+        "degree": "B.Tech",
+        "major": "Artificial Intelligence & Data Science",
+        "graduation_year": 2026,
+        "gpa": 3.92
+      }
+    ],
+    "projects": [
+      {
+        "title": "Autonomous RAG Agent for Legal Reasoning",
+        "technologies": ["Python", "LangChain", "FastAPI", "Docker", "PostgreSQL"],
+        "highlights": ["Built domain-specific retrieval-augmented generation engine with hybrid search and reranking."]
+      },
+      {
+        "title": "DistilBERT Fine-Tuning for Sentiment Analytics",
+        "technologies": ["Python", "PyTorch", "Transformers", "Docker"],
+        "highlights": ["Fine-tuned transformer model achieving 94.2% F1 score on financial documents."]
+      }
+    ],
+    "work_experiences": [
+      {
+        "company_name": "DeepTech Labs",
+        "role_title": "AI Research Intern",
+        "technologies_used": ["Python", "PyTorch", "LangChain"],
+        "bullets": ["Researched prompt optimization and tool-calling workflows for autonomous agents."]
+      }
+    ],
+    "certifications": ["DeepLearning.AI Generative AI with LLMs"],
+    "ground_truth": {
+      "expected_domains": ["AI / Machine Learning & GenAI"],
+      "core_matching_skills": ["Python", "LangChain", "FastAPI", "PyTorch", "Docker"],
+      "expected_titles": ["Generative AI & LLM Engineering Intern", "Agentic AI & Autonomous Systems Intern", "Machine Learning Systems Intern"],
+      "negative_domains": ["Mobile & Systems Software", "Cybersecurity, Tooling & Quality Engineering"]
+    }
+  },
+  {
+    "profile_id": "STUDENT-02-SYS-BACKEND",
+    "candidate_name": "Priya Patel",
+    "email": "priya.patel@example.com",
+    "phone": "+91-9876505678",
+    "university_name": "National Institute of Technology Karnataka, Surathkal",
+    "degree_major": "B.Tech in Computer Science and Engineering",
+    "gpa": 3.88,
+    "graduation_year": 2026,
+    "batch": "2022-2026",
+    "skills": [
+      "C++",
+      "Linux",
+      "Apache Kafka",
+      "Docker",
+      "PostgreSQL",
+      "Bash",
+      "Git",
+      "Redis",
+      "CMake",
+      "gRPC"
+    ],
+    "educations": [
+      {
+        "institution_name": "NIT Surathkal",
+        "degree": "B.Tech",
+        "major": "Computer Science and Engineering",
+        "graduation_year": 2026,
+        "gpa": 3.88
+      }
+    ],
+    "projects": [
+      {
+        "title": "Distributed Log Storage Engine (Raft Consensus)",
+        "technologies": ["C++", "Linux", "CMake", "Docker"],
+        "highlights": ["Implemented distributed consensus log replication engine with sub-millisecond commit latency."]
+      },
+      {
+        "title": "High-Throughput Event Streaming Broker",
+        "technologies": ["Apache Kafka", "C++", "Redis", "Docker"],
+        "highlights": ["Engineered high-throughput event processing pipeline handling 100k events/sec."]
+      }
+    ],
+    "work_experiences": [
+      {
+        "company_name": "CloudScale Networks",
+        "role_title": "Systems Engineering Intern",
+        "technologies_used": ["C++", "Linux", "Bash"],
+        "bullets": ["Optimized network socket throughput and kernel buffer management."]
+      }
+    ],
+    "certifications": ["Linux Foundation Certified System Administrator"],
+    "ground_truth": {
+      "expected_domains": ["Backend & Distributed Systems"],
+      "core_matching_skills": ["C++", "Linux", "Apache Kafka", "Docker", "PostgreSQL"],
+      "expected_titles": ["Network & IPC Systems Intern", "Event-Driven Architecture & Messaging Intern", "Distributed Storage Engine Intern"],
+      "negative_domains": ["Full-Stack Web & Applications", "Mobile & Systems Software"]
+    }
+  },
+  {
+    "profile_id": "STUDENT-03-FULLSTACK-WEB",
+    "candidate_name": "Rohan Verma",
+    "email": "rohan.verma@example.com",
+    "phone": "+91-9876509012",
+    "university_name": "Birla Institute of Technology and Science, Pilani",
+    "degree_major": "B.E. in Information Technology",
+    "gpa": 3.75,
+    "graduation_year": 2026,
+    "batch": "2022-2026",
+    "skills": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "TailwindCSS",
+      "PostgreSQL",
+      "FastAPI",
+      "Docker",
+      "REST APIs",
+      "Git"
+    ],
+    "educations": [
+      {
+        "institution_name": "BITS Pilani",
+        "degree": "B.E.",
+        "major": "Information Technology",
+        "graduation_year": 2026,
+        "gpa": 3.75
+      }
+    ],
+    "projects": [
+      {
+        "title": "Real-Time Collaborative Canvas App",
+        "technologies": ["Next.js", "React", "TypeScript", "TailwindCSS"],
+        "highlights": ["Built dynamic multi-user whiteboard application using React 19 and Next.js 15 App Router."]
+      },
+      {
+        "title": "SaaS Subscription Billing Dashboard",
+        "technologies": ["Node.js", "React", "PostgreSQL", "Docker"],
+        "highlights": ["Created subscription lifecycle billing dashboard with Stripe webhooks and JWT auth."]
+      }
+    ],
+    "work_experiences": [
+      {
+        "company_name": "Fintech Labs",
+        "role_title": "Frontend Engineering Intern",
+        "technologies_used": ["React", "TypeScript", "Next.js"],
+        "bullets": ["Implemented accessible design systems and client-side caching reducing page load times by 40%."]
+      }
+    ],
+    "certifications": ["Meta Front-End Developer Professional Certificate"],
+    "ground_truth": {
+      "expected_domains": ["Full-Stack Web & Applications"],
+      "core_matching_skills": ["Next.js", "React", "TypeScript", "TailwindCSS", "Node.js"],
+      "expected_titles": ["Modern Web Applications Intern (Next.js 15)", "Full-Stack Software Engineering Intern (React/Node)", "Full-Stack AI Product Intern (Next.js/FastAPI)"],
+      "negative_domains": ["Data Engineering & Analytics", "Mobile & Systems Software"]
+    }
+  },
+  {
+    "profile_id": "STUDENT-04-DEVOPS-CLOUD",
+    "candidate_name": "Ananya Iyer",
+    "email": "ananya.iyer@example.com",
+    "phone": "+91-9876503456",
+    "university_name": "Delhi Technological University",
+    "degree_major": "B.Tech in Computer Engineering",
+    "gpa": 3.81,
+    "graduation_year": 2026,
+    "batch": "2022-2026",
+    "skills": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "Linux",
+      "CI/CD",
+      "Terraform",
+      "Python",
+      "Bash",
+      "Git",
+      "Prometheus"
+    ],
+    "educations": [
+      {
+        "institution_name": "DTU Delhi",
+        "degree": "B.Tech",
+        "major": "Computer Engineering",
+        "graduation_year": 2026,
+        "gpa": 3.81
+      }
+    ],
+    "projects": [
+      {
+        "title": "Multi-Cluster Kubernetes GitOps Automation",
+        "technologies": ["Kubernetes", "Docker", "Terraform", "CI/CD"],
+        "highlights": ["Automated multi-region cluster provisioning with Terraform and declarative GitOps pipelines."]
+      },
+      {
+        "title": "Automated Cloud Observability & SLA Monitoring",
+        "technologies": ["AWS", "Prometheus", "Python", "Bash"],
+        "highlights": ["Deployed Prometheus metric scrapers and alerting rules monitoring microservice SLAs."]
+      }
+    ],
+    "work_experiences": [
+      {
+        "company_name": "InfraCloud Solutions",
+        "role_title": "DevOps Intern",
+        "technologies_used": ["Docker", "Kubernetes", "AWS", "CI/CD"],
+        "bullets": ["Maintained deployment manifests and reduced container image build times by 35%."]
+      }
+    ],
+    "certifications": ["AWS Certified Solutions Architect - Associate", "Certified Kubernetes Application Developer (CKAD)"],
+    "ground_truth": {
+      "expected_domains": ["Cloud, DevOps, Platform & SRE"],
+      "core_matching_skills": ["Docker", "AWS", "Kubernetes", "Linux", "CI/CD"],
+      "expected_titles": ["Cloud Infrastructure & DevOps Intern", "Kubernetes & Container Platform Intern", "Site Reliability Engineering (SRE) Intern"],
+      "negative_domains": ["AI / Machine Learning & GenAI", "Full-Stack Web & Applications"]
+    }
+  },
+  {
+    "profile_id": "STUDENT-05-DATA-ENG",
+    "candidate_name": "Vikramaditya Nair",
+    "email": "vikramaditya.nair@example.com",
+    "phone": "+91-9876507890",
+    "university_name": "Manipal Institute of Technology",
+    "degree_major": "B.Tech in Data Science and Engineering",
+    "gpa": 3.84,
+    "graduation_year": 2026,
+    "batch": "2022-2026",
+    "skills": [
+      "Python",
+      "SQL",
+      "PostgreSQL",
+      "Apache Spark",
+      "Docker",
+      "Pandas",
+      "ETL Pipelines",
+      "Linux",
+      "Git",
+      "Data Warehousing"
+    ],
+    "educations": [
+      {
+        "institution_name": "Manipal Institute of Technology",
+        "degree": "B.Tech",
+        "major": "Data Science and Engineering",
+        "graduation_year": 2026,
+        "gpa": 3.84
+      }
+    ],
+    "projects": [
+      {
+        "title": "Distributed Clickstream ETL Lakehouse Pipeline",
+        "technologies": ["Python", "Apache Spark", "PostgreSQL", "Docker"],
+        "highlights": ["Built distributed streaming ingestion pipeline processing 50M events into Parquet delta tables."]
+      },
+      {
+        "title": "Financial Fraud Detection Batch Pipeline",
+        "technologies": ["Python", "SQL", "Pandas", "PostgreSQL"],
+        "highlights": ["Designed automated daily ETL workflows computing aggregate anomaly feature matrices."]
+      }
+    ],
+    "work_experiences": [
+      {
+        "company_name": "QuantMetrics",
+        "role_title": "Data Analyst Intern",
+        "technologies_used": ["Python", "SQL", "PostgreSQL", "Pandas"],
+        "bullets": ["Authored optimized SQL analytical queries and automated daily feature pipelines."]
+      }
+    ],
+    "certifications": ["Databricks Certified Associate Developer for Apache Spark"],
+    "ground_truth": {
+      "expected_domains": ["Data Engineering & Analytics"],
+      "core_matching_skills": ["Python", "SQL", "PostgreSQL", "Docker", "Apache Spark"],
+      "expected_titles": ["Data Engineering & ETL Pipelines Intern", "Analytics Engineering Intern", "Data Warehouse & Lakehouse Intern"],
+      "negative_domains": ["Mobile & Systems Software", "Cloud, DevOps, Platform & SRE"]
+    }
+  }
+]
