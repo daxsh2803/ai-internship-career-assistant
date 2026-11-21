@@ -354,20 +354,13 @@ export const JobMatchesTab: React.FC<JobMatchesTabProps> = ({
     <div className="space-y-6 animate-fade-in">
       <Card className="shadow-sm border-slate-200 dark:border-slate-800">
         <CardHeader className="pb-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <CardTitle className="text-base flex items-center gap-2">
-                <BrainCircuit className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                AI Job-Resume Matching Agent
-              </CardTitle>
-              <CardDescription className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Multi-faceted heuristic scoring (35% Req Skills, 25% Projects, 20% Semantic, 10% Pref Skills, 10% Education) + Grounded LLM Reasoning
-              </CardDescription>
-            </div>
-            <Badge variant="indigo" size="sm">
-              M2.3 Matching Agent
-            </Badge>
-          </div>
+          <CardTitle className="text-base flex items-center gap-2">
+            <BrainCircuit className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            AI Job-Resume Matching Agent
+          </CardTitle>
+          <CardDescription className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            35% Required Skills, 25% Projects, 20% Semantic, 10% Preferred Skills, 10% Education + LLM Reasoning
+          </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4">

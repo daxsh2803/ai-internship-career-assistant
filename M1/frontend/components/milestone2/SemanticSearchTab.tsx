@@ -280,20 +280,10 @@ export const SemanticSearchTab: React.FC = () => {
     <div className="space-y-6 animate-fade-in">
       <Card className="shadow-sm border-slate-200 dark:border-slate-800">
         <CardHeader className="pb-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <CardTitle className="text-base flex items-center gap-2">
-                <Search className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                Hybrid Semantic Internship Search
-              </CardTitle>
-              <CardDescription className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Dense embedding similarity + BM25 sparse keyword ranking + Cross-Encoder re-ranking
-              </CardDescription>
-            </div>
-            <Badge variant="indigo" size="sm">
-              M2.2 RAG Engine
-            </Badge>
-          </div>
+          <CardTitle className="text-base flex items-center gap-2">
+            <Search className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            Hybrid Semantic Internship Search
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <form onSubmit={handleSearch} className="space-y-4">

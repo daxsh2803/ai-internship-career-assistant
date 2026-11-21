@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 
 export const Navbar: React.FC = () => {
   return (
@@ -22,9 +21,6 @@ export const Navbar: React.FC = () => {
               Springboard
             </span>
           </div>
-          <Badge variant="indigo" size="sm" className="ml-1 font-medium">
-            Milestone 2
-          </Badge>
         </Link>
       </div>
     </header>
