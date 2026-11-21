@@ -3,9 +3,9 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 
 export const metadata: Metadata = {
-  title: "InternAI | Milestone 1: Foundation & Candidate Understanding",
+  title: "InternAI | Milestone 2: Intelligent Retrieval & Job-Resume Matching Agent",
   description:
-    "Milestone 1 candidate profile modeling, layout-aware PDF resume ingestion, and proof-of-concept validation.",
+    "Milestone 2 hybrid RAG semantic job discovery, candidate profile matching, and grounded LLM reasoning.",
 };
 
 export default function RootLayout({

@@ -23,7 +23,7 @@ export const Navbar: React.FC = () => {
             </span>
           </div>
           <Badge variant="indigo" size="sm" className="ml-1 font-medium">
-            Milestone 1
+            Milestone 2
           </Badge>
         </Link>
       </div>

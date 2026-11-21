@@ -167,3 +167,83 @@ export interface KanbanBoard {
   rejected: Application[];
   withdrawn: Application[];
 }
+
+export interface StandardJobPosting {
+  id: string;
+  job_title: string;
+  company: string;
+  location: string;
+  work_mode: string;
+  is_remote: boolean;
+  job_description: string;
+  responsibilities: string[];
+  required_skills: string[];
+  preferred_skills: string[];
+  qualifications: string[];
+  experience_requirements: string | string[];
+  education_requirements: string | string[];
+  stipend?: string | null;
+  domain: string;
+  tags: string[];
+  posted_at: string;
+}
+
+export interface MatchedChunkInfo {
+  chunk_type: string;
+  content_snippet: string;
+  score: number;
+}
+
+export interface SemanticSearchResultItem {
+  job: StandardJobPosting;
+  relevance_score: number;
+  matched_chunks: MatchedChunkInfo[];
+}
+
+export interface SemanticSearchRequest {
+  query: string;
+  domain?: string | null;
+  is_remote?: boolean | null;
+  top_k?: number;
+  use_reranker?: boolean;
+}
+
+export interface SemanticSearchResponse {
+  total_matches: number;
+  query: string;
+  results: SemanticSearchResultItem[];
+}
+
+export interface ScoreBreakdown {
+  required_skills_score: number;
+  preferred_skills_score: number;
+  projects_experience_score: number;
+  education_qualifications_score: number;
+  semantic_relevance_score: number;
+}
+
+export interface JobMatchResult {
+  job: StandardJobPosting;
+  overall_match_score: number;
+  score_breakdown: ScoreBreakdown;
+  matched_skills: string[];
+  missing_required_skills: string[];
+  missing_preferred_skills: string[];
+  reasoning: string;
+  recommendation_tier: string;
+}
+
+export interface MatchRequest {
+  candidate_profile: any;
+  top_k?: number;
+  domain?: string | null;
+  is_remote?: boolean | null;
+  use_llm_reasoning?: boolean;
+}
+
+export interface MatchResponse {
+  candidate_name: string;
+  candidate_skills: string[];
+  total_evaluated_jobs: number;
+  results: JobMatchResult[];
+}

@@ -5,7 +5,10 @@ import {
   Job,
   JobListResponse,
   KanbanBoard,
+  MatchResponse,
   ResumeUploadResponse,
+  SemanticSearchRequest,
+  SemanticSearchResponse,
   User,
 } from "./types";
 
@@ -205,6 +208,69 @@ class ApiClient {
       method: "PATCH",
       body: JSON.stringify({ new_stage: newStage, notes }),
     });
+  }
+
+  async semanticSearch(data: {
+    query: string;
+    domain?: string | null;
+    is_remote?: boolean | null;
+    top_k?: number;
+    use_reranker?: boolean;
+  }): Promise<SemanticSearchResponse> {
+    const payload = {
+      query: data.query,
+      domain: data.domain !== undefined && data.domain !== "" ? data.domain : null,
+      is_remote: data.is_remote !== undefined ? data.is_remote : null,
+      top_k: data.top_k ?? 5,
+      use_reranker: data.use_reranker ?? true,
+    };
+    return this.request<SemanticSearchResponse>("/jobs/semantic-search", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  }
+
+  async matchResume(params: {
+    file: File;
+    top_k?: number;
+    domain?: string | null;
+    is_remote?: boolean | null;
+    use_llm_reasoning?: boolean;
+  }): Promise<MatchResponse> {
+    const url = `${API_BASE_URL}/jobs/match-resume`;
+    const formData = new FormData();
+    formData.append("file", params.file);
+    if (params.top_k !== undefined) {
+      formData.append("top_k", params.top_k.toString());
+    }
+    if (params.domain && params.domain.trim() !== "") {
+      formData.append("domain", params.domain.trim());
+    }
+    if (params.is_remote !== undefined && params.is_remote !== null) {
+      formData.append("is_remote", params.is_remote.toString());
+    }
+    formData.append("use_llm_reasoning", (params.use_llm_reasoning ?? false).toString());
+
+    const headers: Record<string, string> = {
+      ...this.getAuthHeader(),
+    };
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+
+    if (!response.ok) {
+      let errMessage = `Resume matching failed with status ${response.status}`;
+      try {
+        const err = await response.json();
+        errMessage = err.detail || errMessage;
+      } catch (_) {}
+      throw new ApiClientError(response.status, errMessage);
+    }
+
+    return (await response.json()) as MatchResponse;
   }
 }
 

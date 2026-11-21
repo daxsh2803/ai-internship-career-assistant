@@ -26,11 +26,15 @@ import {
   Cloud,
   BarChart3,
   Bot,
+  Search,
+  BrainCircuit,
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
+import { SemanticSearchTab } from "@/components/milestone2/SemanticSearchTab";
+import { JobMatchesTab } from "@/components/milestone2/JobMatchesTab";
 
 export interface ProfileData {
   fullName: string;
@@ -85,7 +89,7 @@ export interface ParsedResumeJSON {
   };
 }
 
-type TabType = "signin" | "registered" | "resume" | "skills";
+type TabType = "signin" | "registered" | "resume" | "skills" | "search" | "matches";
 type UploadStage = "idle" | "selected" | "uploaded" | "analyzing" | "analyzed";
 
 export default function Milestone1Page() {
@@ -417,6 +421,32 @@ export default function Milestone1Page() {
           >
             <Sparkles className="w-4 h-4" />
             <span>My Skills</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("search")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-all ${
+              activeTab === "search"
+                ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm font-semibold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50"
+            }`}
+          >
+            <Search className="w-4 h-4" />
+            <span>Semantic Search</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("matches")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-medium rounded-lg transition-all ${
+              activeTab === "matches"
+                ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm font-semibold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/50"
+            }`}
+          >
+            <BrainCircuit className="w-4 h-4" />
+            <span>AI Job Matches</span>
           </button>
         </div>
 
@@ -1249,6 +1279,16 @@ export default function Milestone1Page() {
             </div>
           )}
         </>
+      )}
+
+      {activeTab === "search" && <SemanticSearchTab />}
+
+      {activeTab === "matches" && (
+        <JobMatchesTab
+          parentSelectedFile={selectedFile}
+          activeCandidateName={activeCandidate?.fullName}
+          onNavigateToIngestion={() => setActiveTab("resume")}
+        />
       )}
     </div>
   );
